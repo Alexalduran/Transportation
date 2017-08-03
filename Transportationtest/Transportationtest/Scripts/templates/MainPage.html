@@ -1,0 +1,97 @@
+﻿<table class="table" cellpadding="10" cellspacing="10">
+    <tr>
+        <td valign="top">
+            <div class="center-block" >
+                <table>
+                    <thead>
+                        <tr>
+
+                            <td style="padding-right: 15px">Name</td>
+                            <td style="padding-right: 15px">Type of Transport</td>
+                            <td style="padding-right: 15px">Mode of Transport</td>
+                            <td style="padding-right: 15px">Power Source</td>
+                            <td style="padding-right: 15px">Capacity </td>
+
+                            <td>&nbsp;</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in edit.items">
+                            <td>{{item.Name}}</td>
+                            <td>{{item.TypeOfTransportString}}</td>
+                            <td>{{item.TypeOfTransportMode}}</td>
+                            <td>{{item.TypeOfPowerSource}}</td>
+                            <td>
+                                <table>
+                                    <tr ng-repeat="c in item.Capacity">
+
+                                        <td>{{c.Count}} {{c.UnitOfMeasure}} {{c.PassengerType}}
+                                            <button class="btn btn-primary" ng-click="edit.edit(item)">Edit</button>
+                                            <button class="btn btn-danger" ng-click="edit.delete(item.Name)">Delete</button>
+
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+        <td valign="top">
+            <div class="center-block">
+                <form name="transportationForm">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" ng-model="edit.tObj.Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Transportation Type</label>
+                        <select class="form-control" ng-model="edit.tObj.TransportType">
+                            <option value="Plane">Plane</option>
+                            <option value="Train">Train</option>
+                            <option value="Auto">Auto</option>
+                            <option value="Boat">Boat</option>
+
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Transportation Mode</label>
+                        <select class="form-control" ng-model="edit.tObj.TransportMode">
+                            <option value="Land">Land</option>
+                            <option value="Sea">Sea</option>
+                            <option value="Air">Air</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Power Source</label>
+                        <select class="form-control" ng-model="edit.tObj.PowerSource">
+                            <option value="Deisel">Deisel</option>
+                            <option value="Battery">Battery</option>
+                            <option value="Solar">Solar</option>
+
+                        </select>
+                    </div>
+                    <p>Capacity</p>
+                    <div class="form-group">
+                        <label>Capacity Count</label>
+                        <input type="text" class="form-control" ng-model="edit.capacity.Count">
+                    </div>
+                    <div class="form-group">
+                        <label>Capacity Unit of Measure</label>
+                        <input type="text" class="form-control" ng-model="edit.capacity.UnitofMeasure">
+
+                    </div>
+                    <div class="form-group">
+                        <label>Capacity PassengerType</label>
+                        <input type="text" class="form-control" ng-model="edit.capacity.PassengerType">
+                    </div>
+                    <button class="btn btn-primary" ng-click="edit.post(edit.tObj,edit.capacity)">Save</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+</table>
